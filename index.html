@@ -4,122 +4,545 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanghamithra P | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; color: #333; }
-    header { background: #1a1a2e; color: white; padding: 40px 20px; text-align: center; }
-    header h1 { font-size: 2.2rem; }
-    header p { margin-top: 8px; font-size: 0.95rem; color: #ccc; }
-    header a { color: #a0c4ff; text-decoration: none; margin: 0 6px; }
-    section { max-width: 900px; margin: 30px auto; background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-    h2 { font-size: 1.3rem; color: #1a1a2e; border-bottom: 2px solid #a0c4ff; padding-bottom: 6px; margin-bottom: 16px; }
-    .entry { margin-bottom: 16px; }
-    .entry h3 { font-size: 1rem; font-weight: 600; }
-    .entry span { font-size: 0.85rem; color: #777; float: right; }
-    .entry p { font-size: 0.9rem; margin-top: 5px; line-height: 1.6; }
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag { background: #e8f0fe; color: #1a1a2e; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; }
-    .cert-list, .achieve-list { list-style: none; padding: 0; }
-    .cert-list li, .achieve-list li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
-    .cert-list li span, .achieve-list li span { float: right; color: #777; font-size: 0.82rem; }
-    .profiles a { display: inline-block; margin: 5px 8px 5px 0; color: #1a73e8; font-size: 0.9rem; }
-    @media(max-width:600px) { header h1 { font-size: 1.5rem; } .entry span { float: none; display: block; } }
+    :root {
+      --primary: #6c63ff;
+      --secondary: #f50057;
+      --dark: #0f0e17;
+      --card: #1a1a2e;
+      --text: #e0e0e0;
+      --muted: #888;
+      --accent: #a0c4ff;
+      --gradient: linear-gradient(135deg, #6c63ff, #f50057);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: rgba(15,14,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(108,99,255,0.2);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 60px;
+    }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 800;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(108,99,255,0.15), transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.4);
+      color: var(--accent); font-size: 0.8rem; font-weight: 500;
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 20px;
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; line-height: 1.1;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    #hero p.tagline {
+      font-size: 1.1rem; color: var(--muted); max-width: 520px;
+      margin: 0 auto 30px; line-height: 1.7;
+    }
+    .hero-contacts {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 36px;
+    }
+    .hero-contacts a {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text); text-decoration: none;
+      padding: 9px 18px; border-radius: 30px; font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .hero-contacts a:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
+    .hero-contacts a i { font-size: 0.9rem; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gradient); color: white;
+      padding: 13px 34px; border-radius: 30px;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(108,99,255,0.5); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.8rem; font-weight: 800; margin-bottom: 40px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, rgba(108,99,255,0.5), transparent);
+    }
+    .section-title span {
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 16px; padding: 24px 28px;
+      margin-bottom: 18px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gradient);
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(108,99,255,0.4); box-shadow: 0 10px 30px rgba(108,99,255,0.1); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .card-header h3 { font-size: 1rem; font-weight: 700; color: white; }
+    .badge {
+      background: rgba(108,99,255,0.2); color: var(--accent);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 3px 12px; border-radius: 20px;
+      border: 1px solid rgba(108,99,255,0.3);
+      white-space: nowrap;
+    }
+    .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .card .score { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+    /* ── PROJECT CARDS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 16px; padding: 26px;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(108,99,255,0.15); border-color: rgba(108,99,255,0.5); }
+    .project-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .project-card h3 { font-size: 1rem; font-weight: 700; color: white; }
+    .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-tag {
+      background: rgba(245,0,87,0.1); color: #ff6b9d;
+      font-size: 0.72rem; padding: 3px 10px; border-radius: 12px;
+      border: 1px solid rgba(245,0,87,0.2);
+    }
+
+    /* ── SKILLS ── */
+    .skills-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .skill-category {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 16px; padding: 22px;
+      transition: border-color 0.3s;
+    }
+    .skill-category:hover { border-color: rgba(108,99,255,0.4); }
+    .skill-category h4 { font-size: 0.82rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-tag {
+      background: rgba(108,99,255,0.1); color: var(--text);
+      font-size: 0.8rem; padding: 5px 12px; border-radius: 8px;
+      border: 1px solid rgba(108,99,255,0.2);
+      transition: background 0.2s;
+    }
+    .skill-tag:hover { background: rgba(108,99,255,0.25); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 14px; padding: 20px 22px;
+      display: flex; align-items: center; gap: 16px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .cert-card:hover { transform: translateY(-3px); border-color: rgba(108,99,255,0.4); }
+    .cert-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(108,99,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .cert-info h4 { font-size: 0.88rem; font-weight: 600; color: white; }
+    .cert-info p { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+
+    /* ── ACHIEVEMENTS ── */
+    .achieve-list { display: flex; flex-direction: column; gap: 14px; }
+    .achieve-item {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 14px; padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .achieve-item:hover { transform: translateX(6px); border-color: rgba(108,99,255,0.4); }
+    .achieve-emoji { font-size: 1.6rem; flex-shrink: 0; }
+    .achieve-text h4 { font-size: 0.9rem; font-weight: 600; color: white; }
+    .achieve-text p { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+
+    /* ── CODING PROFILES ── */
+    .profiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .profile-card {
+      background: var(--card);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-radius: 14px; padding: 22px;
+      text-align: center; text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .profile-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(108,99,255,0.15); border-color: rgba(108,99,255,0.5); }
+    .profile-card i { font-size: 1.8rem; color: var(--primary); }
+    .profile-card span { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 30px 20px;
+      border-top: 1px solid rgba(108,99,255,0.15);
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer span { color: var(--primary); }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: rgba(15,14,23,0.97); padding: 20px; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      section { padding: 60px 16px; }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Sanghamithra P</h1>
-  <p>
-    📞 7305773537 &nbsp;|&nbsp;
-    ✉️ <a href="mailto:sanghamithra.p2024aiml@sece.ac.in">sanghamithra.p2024aiml@sece.ac.in</a> &nbsp;|&nbsp;
-    <a href="#" target="_blank">GitHub</a> &nbsp;|&nbsp;
-    <a href="#" target="_blank">LinkedIn</a>
-  </p>
-</header>
-
-<section>
-  <h2>Education</h2>
-  <div class="entry">
-    <h3>B.E CSE (AIML) — Sri Eshwar College of Engineering <span>2024–2028</span></h3>
-    <p>CGPA: 8.37</p>
-  </div>
-  <div class="entry">
-    <h3>HSC — Bharath Vidhya Nikketan MHSS <span>2023–2024</span></h3>
-    <p>92.5%</p>
-  </div>
-  <div class="entry">
-    <h3>SSLC — Bharath Vidhya Nikketan MHSS <span>2021–2022</span></h3>
-    <p>97.4%</p>
-  </div>
-</section>
-
-<section>
-  <h2>Internship</h2>
-  <div class="entry">
-    <h3>National Institute of Electronics and Information Technology (NIELIT, Calicut)</h3>
-    <p>Built a cloud-based IoT system using ESP32 and Adafruit IO to monitor temperature and presence with real-time alerts. Designed three specialized nodes — sensor, control, and alert — demonstrating scalable, modular, and intelligent environment monitoring.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Projects</h2>
-  <div class="entry">
-    <h3>Personalized Health Monitoring and Alerts <span>2025</span></h3>
-    <p>Intelligent chatbot that fetches live health info via SerpApi and summarizes using Hugging Face's T5 model. Built with Flask backend, HTML/CSS/JS frontend, and Web Speech API for text-to-speech accessibility.</p>
-  </div>
-  <div class="entry">
-    <h3>StudyMate <span>2025</span></h3>
-    <p>AI-powered PDF Q&A tool with semantic search (FAISS), transformer models, and a Streamlit frontend. Supports natural language queries and optional audio output for an interactive learning experience.</p>
-  </div>
-  <div class="entry">
-    <h3>Online Food Ordering System <span>2024</span></h3>
-    <p>Console-based system with user authentication, menu browsing, cart management, order summary, and payment processing (card & COD). Built using OOP principles with regex-based input validation.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Certifications</h2>
-  <ul class="cert-list">
-    <li>Database Management Systems — NPTEL <span>2025</span></li>
-    <li>Introduction to Generative AI — IBM <span>2025</span></li>
-    <li>Basics of HTML — Simplilearn <span>2024</span></li>
-    <li>Basics of Python — Scaler <span>2024</span></li>
-    <li>Basics of C — Great Learning <span>2024</span></li>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">SP</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#profiles">Profiles</a></li>
   </ul>
-</section>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-<section>
-  <h2>Achievements</h2>
-  <ul class="achieve-list">
-    <li>🏆 Winner — Code Carnival (Data Detectives), Sri Eshwar College of Engineering <span>2025</span></li>
-    <li>🥇 1st Place — Power of Visuals (Paper Presentation), Hindusthan College of Arts and Science <span>2025</span></li>
-    <li>🥇 1st Place — Paper Presentation, Sri Ranganaathar Institute of Engineering and Technology <span>2024</span></li>
-    <li>🥈 2nd Place — Creatathon, Sri Eshwar College of Engineering <span>2024</span></li>
-  </ul>
-</section>
-
-<section>
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span>
-    <span class="skill-tag">DSA</span><span class="skill-tag">DBMS</span><span class="skill-tag">OOP</span>
-    <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JavaScript</span>
-    <span class="skill-tag">MySQL</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span>
-    <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span><span class="skill-tag">VSCode</span>
-    <span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">Excel</span><span class="skill-tag">Canva</span>
+<!-- HERO -->
+<section id="about" style="max-width:100%; padding:0;">
+  <div id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Open to Opportunities</div>
+      <h1>Sanghamithra P</h1>
+      <p class="tagline">AI/ML Engineer & Full-Stack Developer crafting intelligent solutions with modern technologies.</p>
+      <div class="hero-contacts">
+        <a href="tel:7305773537"><i class="fas fa-phone"></i> 7305773537</a>
+        <a href="mailto:sanghamithra.p2024aiml@sece.ac.in"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://leetcode.com/u/SANGHAMITHRA1-P/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/sanghamithra-p-148867331/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Coding Profiles</h2>
-  <div class="profiles">
-    <a href="#" target="_blank">LeetCode</a>
-    <a href="#" target="_blank">HackerRank</a>
-    <a href="#" target="_blank">CodeChef</a>
-    <a href="#" target="_blank">SkillRack</a>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-title"><span>Education</span></div>
+  <div class="fade-in">
+    <div class="card">
+      <div class="card-header">
+        <h3>B.E CSE (AIML) — Sri Eshwar College of Engineering</h3>
+        <span class="badge">2024 – 2028</span>
+      </div>
+      <p class="score">CGPA: 8.37</p>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>HSC — Bharath Vidhya Nikketan MHSS</h3>
+        <span class="badge">2023 – 2024</span>
+      </div>
+      <p class="score">92.5%</p>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h3>SSLC — Bharath Vidhya Nikketan MHSS</h3>
+        <span class="badge">2021 – 2022</span>
+      </div>
+      <p class="score">97.4%</p>
+    </div>
   </div>
 </section>
 
+<!-- INTERNSHIP -->
+<section id="internship">
+  <div class="section-title"><span>Internship</span></div>
+  <div class="fade-in">
+    <div class="card">
+      <div class="card-header">
+        <h3>NIELIT — National Institute of Electronics and Information Technology, Calicut</h3>
+        <span class="badge">IoT & Cloud</span>
+      </div>
+      <p>Built a cloud-based IoT system using ESP32 and Adafruit IO to monitor temperature and presence with real-time alerts. Designed three specialized nodes — sensor, control, and alert — demonstrating scalable, modular, and intelligent environment monitoring.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title"><span>Projects</span></div>
+  <div class="projects-grid fade-in">
+    <div class="project-card">
+      <div class="project-icon">🩺</div>
+      <h3>Personalized Health Monitoring & Alerts</h3>
+      <p>Intelligent chatbot fetching live health info via SerpApi, summarized using Hugging Face T5. Flask backend with Web Speech API for text-to-speech accessibility.</p>
+      <div class="project-tags">
+        <span class="project-tag">Flask</span>
+        <span class="project-tag">SerpApi</span>
+        <span class="project-tag">Hugging Face</span>
+        <span class="project-tag">Web Speech API</span>
+      </div>
+      <span class="badge" style="align-self:flex-start;">2025</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">📚</div>
+      <h3>StudyMate</h3>
+      <p>AI-powered PDF Q&A tool with semantic search (FAISS) and transformer models. Streamlit frontend with natural language queries and optional audio output.</p>
+      <div class="project-tags">
+        <span class="project-tag">FAISS</span>
+        <span class="project-tag">Transformers</span>
+        <span class="project-tag">Streamlit</span>
+        <span class="project-tag">Python</span>
+      </div>
+      <span class="badge" style="align-self:flex-start;">2025</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🍔</div>
+      <h3>Online Food Ordering System</h3>
+      <p>Console-based system with user auth, menu browsing, cart management, and payment processing (card & COD). Built with OOP principles and regex validation.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">OOP</span>
+        <span class="project-tag">Regex</span>
+      </div>
+      <span class="badge" style="align-self:flex-start;">2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title"><span>Skills</span></div>
+  <div class="skills-categories fade-in">
+    <div class="skill-category">
+      <h4>💻 Programming</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">C</span><span class="skill-tag">C++</span>
+        <span class="skill-tag">Python</span><span class="skill-tag">Java</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>🧠 Core Concepts</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">DSA</span><span class="skill-tag">DBMS</span><span class="skill-tag">OOP</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>🌐 Web Technologies</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
+        <span class="skill-tag">JavaScript</span><span class="skill-tag">MySQL</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>📊 Data Science</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>🛠️ Tools</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+        <span class="skill-tag">VSCode</span><span class="skill-tag">Jupyter</span>
+        <span class="skill-tag">Excel</span><span class="skill-tag">Canva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-title"><span>Certifications</span></div>
+  <div class="cert-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-icon">🗄️</div>
+      <div class="cert-info">
+        <h4>Database Management Systems</h4>
+        <p>NPTEL · 2025</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div class="cert-info">
+        <h4>Introduction to Generative AI</h4>
+        <p>IBM · 2025</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌐</div>
+      <div class="cert-info">
+        <h4>Basics of HTML</h4>
+        <p>Simplilearn · 2024</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div class="cert-info">
+        <h4>Basics of Python</h4>
+        <p>Scaler · 2024</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚙️</div>
+      <div class="cert-info">
+        <h4>Basics of C</h4>
+        <p>Great Learning · 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-title"><span>Achievements</span></div>
+  <div class="achieve-list fade-in">
+    <div class="achieve-item">
+      <div class="achieve-emoji">🏆</div>
+      <div class="achieve-text">
+        <h4>Winner — Code Carnival (Data Detectives)</h4>
+        <p>Sri Eshwar College of Engineering · 2025</p>
+      </div>
+    </div>
+    <div class="achieve-item">
+      <div class="achieve-emoji">🥇</div>
+      <div class="achieve-text">
+        <h4>1st Place — Power of Visuals (Paper Presentation)</h4>
+        <p>Hindusthan College of Arts and Science · 2025</p>
+      </div>
+    </div>
+    <div class="achieve-item">
+      <div class="achieve-emoji">🥇</div>
+      <div class="achieve-text">
+        <h4>1st Place — Paper Presentation</h4>
+        <p>Sri Ranganaathar Institute of Engineering and Technology · 2024</p>
+      </div>
+    </div>
+    <div class="achieve-item">
+      <div class="achieve-emoji">🥈</div>
+      <div class="achieve-text">
+        <h4>2nd Place — Creatathon</h4>
+        <p>Sri Eshwar College of Engineering · 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CODING PROFILES -->
+<section id="profiles">
+  <div class="section-title"><span>Coding Profiles</span></div>
+  <div class="profiles-grid fade-in">
+    <a href="#" target="_blank" class="profile-card">
+      <i class="fas fa-code"></i>
+      <span>LeetCode</span>
+    </a>
+    <a href="#" target="_blank" class="profile-card">
+      <i class="fab fa-hackerrank"></i>
+      <span>HackerRank</span>
+    </a>
+    <a href="#" target="_blank" class="profile-card">
+      <i class="fas fa-laptop-code"></i>
+      <span>CodeChef</span>
+    </a>
+    <a href="#" target="_blank" class="profile-card">
+      <i class="fas fa-star"></i>
+      <span>SkillRack</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & Built by <span>Sanghamithra P</span> · 2025</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+</script>
 </body>
 </html>
