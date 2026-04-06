@@ -1,5 +1,125 @@
-<htm>
-    <body>
-        <p>Welcome</p>
-    </body>
-</htm>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sanghamithra P | Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; color: #333; }
+    header { background: #1a1a2e; color: white; padding: 40px 20px; text-align: center; }
+    header h1 { font-size: 2.2rem; }
+    header p { margin-top: 8px; font-size: 0.95rem; color: #ccc; }
+    header a { color: #a0c4ff; text-decoration: none; margin: 0 6px; }
+    section { max-width: 900px; margin: 30px auto; background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    h2 { font-size: 1.3rem; color: #1a1a2e; border-bottom: 2px solid #a0c4ff; padding-bottom: 6px; margin-bottom: 16px; }
+    .entry { margin-bottom: 16px; }
+    .entry h3 { font-size: 1rem; font-weight: 600; }
+    .entry span { font-size: 0.85rem; color: #777; float: right; }
+    .entry p { font-size: 0.9rem; margin-top: 5px; line-height: 1.6; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag { background: #e8f0fe; color: #1a1a2e; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; }
+    .cert-list, .achieve-list { list-style: none; padding: 0; }
+    .cert-list li, .achieve-list li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+    .cert-list li span, .achieve-list li span { float: right; color: #777; font-size: 0.82rem; }
+    .profiles a { display: inline-block; margin: 5px 8px 5px 0; color: #1a73e8; font-size: 0.9rem; }
+    @media(max-width:600px) { header h1 { font-size: 1.5rem; } .entry span { float: none; display: block; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Sanghamithra P</h1>
+  <p>
+    📞 7305773537 &nbsp;|&nbsp;
+    ✉️ <a href="mailto:sanghamithra.p2024aiml@sece.ac.in">sanghamithra.p2024aiml@sece.ac.in</a> &nbsp;|&nbsp;
+    <a href="#" target="_blank">GitHub</a> &nbsp;|&nbsp;
+    <a href="#" target="_blank">LinkedIn</a>
+  </p>
+</header>
+
+<section>
+  <h2>Education</h2>
+  <div class="entry">
+    <h3>B.E CSE (AIML) — Sri Eshwar College of Engineering <span>2024–2028</span></h3>
+    <p>CGPA: 8.37</p>
+  </div>
+  <div class="entry">
+    <h3>HSC — Bharath Vidhya Nikketan MHSS <span>2023–2024</span></h3>
+    <p>92.5%</p>
+  </div>
+  <div class="entry">
+    <h3>SSLC — Bharath Vidhya Nikketan MHSS <span>2021–2022</span></h3>
+    <p>97.4%</p>
+  </div>
+</section>
+
+<section>
+  <h2>Internship</h2>
+  <div class="entry">
+    <h3>National Institute of Electronics and Information Technology (NIELIT, Calicut)</h3>
+    <p>Built a cloud-based IoT system using ESP32 and Adafruit IO to monitor temperature and presence with real-time alerts. Designed three specialized nodes — sensor, control, and alert — demonstrating scalable, modular, and intelligent environment monitoring.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="entry">
+    <h3>Personalized Health Monitoring and Alerts <span>2025</span></h3>
+    <p>Intelligent chatbot that fetches live health info via SerpApi and summarizes using Hugging Face's T5 model. Built with Flask backend, HTML/CSS/JS frontend, and Web Speech API for text-to-speech accessibility.</p>
+  </div>
+  <div class="entry">
+    <h3>StudyMate <span>2025</span></h3>
+    <p>AI-powered PDF Q&A tool with semantic search (FAISS), transformer models, and a Streamlit frontend. Supports natural language queries and optional audio output for an interactive learning experience.</p>
+  </div>
+  <div class="entry">
+    <h3>Online Food Ordering System <span>2024</span></h3>
+    <p>Console-based system with user authentication, menu browsing, cart management, order summary, and payment processing (card & COD). Built using OOP principles with regex-based input validation.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Certifications</h2>
+  <ul class="cert-list">
+    <li>Database Management Systems — NPTEL <span>2025</span></li>
+    <li>Introduction to Generative AI — IBM <span>2025</span></li>
+    <li>Basics of HTML — Simplilearn <span>2024</span></li>
+    <li>Basics of Python — Scaler <span>2024</span></li>
+    <li>Basics of C — Great Learning <span>2024</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Achievements</h2>
+  <ul class="achieve-list">
+    <li>🏆 Winner — Code Carnival (Data Detectives), Sri Eshwar College of Engineering <span>2025</span></li>
+    <li>🥇 1st Place — Power of Visuals (Paper Presentation), Hindusthan College of Arts and Science <span>2025</span></li>
+    <li>🥇 1st Place — Paper Presentation, Sri Ranganaathar Institute of Engineering and Technology <span>2024</span></li>
+    <li>🥈 2nd Place — Creatathon, Sri Eshwar College of Engineering <span>2024</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span>
+    <span class="skill-tag">DSA</span><span class="skill-tag">DBMS</span><span class="skill-tag">OOP</span>
+    <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">MySQL</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span>
+    <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span><span class="skill-tag">VSCode</span>
+    <span class="skill-tag">Jupyter Notebook</span><span class="skill-tag">Excel</span><span class="skill-tag">Canva</span>
+  </div>
+</section>
+
+<section>
+  <h2>Coding Profiles</h2>
+  <div class="profiles">
+    <a href="#" target="_blank">LeetCode</a>
+    <a href="#" target="_blank">HackerRank</a>
+    <a href="#" target="_blank">CodeChef</a>
+    <a href="#" target="_blank">SkillRack</a>
+  </div>
+</section>
+
+</body>
+</html>
